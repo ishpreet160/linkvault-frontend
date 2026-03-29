@@ -1,18 +1,31 @@
-# React + Vite
+# LinkVault Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+React frontend for the LinkVault bookmark manager.
 
-Currently, two official plugins are available:
+## Live
+https://linkvault-frontend-git-main-ishpreet160s-projects.vercel.app/
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Tech Stack
+- React + Vite
+- Axios for API calls
+- React Router for navigation
 
-## React Compiler
+## Features
+- Register and login with email and password
+- Protected dashboard — redirects to login if no token
+- Add bookmarks with URL and title
+- Delete your own bookmarks
+- Logout clears session
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+## How it connects to backend
+Axios is configured with a base URL pointing to the Flask backend.
+A request interceptor automatically attaches the JWT token from
+localStorage to every API call. A response interceptor handles 401
+errors by clearing localStorage and redirecting to login.
+The Dashboard route is wrapped in a ProtectedRoute component that
+checks for a valid token before rendering.
 
-Note: This will impact Vite dev & build performances.
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Pages
+- Login — authenticates user, saves token to localStorage
+- Register — creates new account, redirects to login
+- Dashboard — displays and manages bookmarks, protected route
