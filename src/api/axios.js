@@ -1,6 +1,6 @@
 import axios from 'axios';
 const api=axios.create({
-    baseURL:'https://linkvault-backend-o7mm.onrender.com'
+    baseURL:'https://linkvault-backend-o7mm.onrender.com/api'
 })
 api.interceptors.request.use(
     (config)=>{
