@@ -1,6 +1,6 @@
 import{useState} from 'react';
 import api from '../api/axios'
-import{useNavigate} from 'react-router-dom';
+import{useNavigate,Link} from 'react-router-dom';
 
 function Login(){
     const[email,setEmail]=useState('')
@@ -24,6 +24,7 @@ function Login(){
     }
     return(<div>
         <h2>Login page</h2>
+        <p>Don't have an account? <Link to="/register">Register</Link></p>
         <input
         type='email'
         value={email}
